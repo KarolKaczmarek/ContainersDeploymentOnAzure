@@ -12,7 +12,7 @@
       "value": "containersdns"
     },
     "configurationUri": {
-      "value": ""
+      "value": "https://github.com/KarolKaczmarek/ContainersDeploymentOnAzure/blob/master/AzureVMDSCConfigurationPackages/CreateContainer.ps1.zip"
     },
     "configurationSasToken": {
       "value":  ""
