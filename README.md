@@ -8,5 +8,5 @@ New-AzureResourceGroup -verbose -ResourceGroupName "containersrg" -Location "Eas
 
 After modifying the DSC configuration, you need to regenerate the .zip package
 ```PowerShell
-Publish-AzureVMDscConfiguration -ConfigurationPath .\CreateContainer.ps1 -ConfigurationArchivePath .\CreateContainer.ps1.zip -force
+Publish-AzureVMDscConfiguration -ConfigurationPath .\CreateContainer.ps1 -ConfigurationArchivePath .\AzureVMDSCConfigurationPackages\CreateContainer.ps1.zip -force
 ```
