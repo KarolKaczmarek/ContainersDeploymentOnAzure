@@ -32,6 +32,15 @@
         Ensure = 'Present'
     }
 
+    File TestFile
+    {
+        DestinationPath = "C:\test\test.txt"
+        Contents = "test contents"
+        Ensure = "Present"
+        DependsOn = "[WindowsFeature]ContainersFeature"
+    }
+
+    <# TODO uncomment after testing
     Script DownloadImage
     {
         GetScript = { return @{} }
@@ -73,6 +82,7 @@
         VirtualSwitchName = 'Virtual Switch'
         DependsOn = "[Script]DownloadImage"
     }
+    #>
 }
 
 CreateContainer -ContainerName "TestContainer1" -containerImageName "WindowsServerCore" -localWimPath "C:\ContainerBaseImage.wim" -wimPath "https://aka.ms/ContainerOSImage"
