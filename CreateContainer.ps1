@@ -85,4 +85,7 @@
     #>
 }
 
-CreateContainer -ContainerName "TestContainer1" -containerImageName "WindowsServerCore" -localWimPath "C:\ContainerBaseImage.wim" -wimPath "https://aka.ms/ContainerOSImage"
+#
+# Compilation sample:
+#
+#CreateContainer -ContainerName "TestContainer1" -containerImageName "WindowsServerCore" -localWimPath "C:\ContainerBaseImage.wim" -wimPath "https://aka.ms/ContainerOSImage"

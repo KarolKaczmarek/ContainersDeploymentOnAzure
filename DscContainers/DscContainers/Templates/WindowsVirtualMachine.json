@@ -40,13 +40,46 @@
       }
     },
     "configurationUri": {
-      "type": "string"
+      "type": "string",
+      "metadata": {
+        "description": "Uri to the DSC configuration package which should be applied on the Azure VM"
+      }
     },
     "configurationSasToken": {
-      "type": "securestring"
+      "type": "securestring",
+      "metadata": {
+        "description": "Optional SAS token to access DSC configuration package"
+      }
     },
     "configurationFunction": {
-      "type": "string"
+      "type": "string",
+      "metadata": {
+        "description": "Name of the configuration which should be compiled and applied"
+      }
+    },
+    "containerName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the container to be created"
+      }
+    },
+    "containerImageName": {
+      "type": "string",
+      "metadata": {
+        "description": "Container image name which should be used when creating the container"
+      }
+    },
+    "localWimPath": {
+      "type": "string",
+      "metadata": {
+        "description": "Local path to the container image. If it doesn't exist, wimPath should be specified as well."
+      }
+    },
+	"wimPath": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional url where container image should be downloaded from. It will be downloaded to the location specified in the localWimPath."
+      }
     }
   },
   "variables": {
@@ -216,7 +249,10 @@
               "sasToken": "[parameters('configurationSasToken')]",
               "configurationFunction": "[parameters('configurationFunction')]",
               "properties": {
-                "ContainerName": "TestContainer"
+                "containerName": "[parameters('containerName')]",
+                "containerImageName": "[parameters('containerImageName')]",
+                "localWimPath": "[parameters('localWimPath')]",
+                "wimPath":  "[parameters('wimPath')]"
               },
               "DataBlobUri": "..."
             },

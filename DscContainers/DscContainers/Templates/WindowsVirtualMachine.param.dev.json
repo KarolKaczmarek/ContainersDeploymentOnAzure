@@ -15,10 +15,22 @@
       "value": "https://github.com/KarolKaczmarek/ContainersDeploymentOnAzure/raw/master/AzureVMDSCConfigurationPackages/CreateContainer.ps1.zip"
     },
     "configurationSasToken": {
-      "value":  ""
+      "value": ""
     },
     "configurationFunction": {
       "value": "CreateContainer.ps1\\CreateContainer"
+    },
+    "containerName": {
+      "value": "TestContainer"
+    },
+    "containerImageName": {
+      "value": "WindowsServerCore"
+    },
+    "localWimPath": {
+      "value": "C:\ContainerBaseImage.wim"
+    },
+     "wimPath": {
+      "value": "https://aka.ms/ContainerOSImage"
     }
   }
 }
