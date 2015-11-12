@@ -40,7 +40,6 @@
         DependsOn = "[WindowsFeature]ContainersFeature"
     }
 
-    <# TODO uncomment after testing
     Script DownloadImage
     {
         GetScript = { return @{} }
@@ -82,7 +81,7 @@
         VirtualSwitchName = 'Virtual Switch'
         DependsOn = "[Script]DownloadImage"
     }
-    #>
+
 }
 
 #
