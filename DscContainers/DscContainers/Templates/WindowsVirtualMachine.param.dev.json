@@ -27,7 +27,7 @@
       "value": "WindowsServerCore"
     },
     "localWimPath": {
-      "value": "C:\ContainerBaseImage.wim"
+      "value": "C:\\ContainerBaseImage.wim"
     },
      "wimPath": {
       "value": "https://aka.ms/ContainerOSImage"
