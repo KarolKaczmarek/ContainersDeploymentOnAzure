@@ -32,43 +32,37 @@
         Ensure = 'Present'
     }
 
-    File TestFile
-    {
-        DestinationPath = "C:\test\test.txt"
-        Contents = "test contents"
-        Ensure = "Present"
-        DependsOn = "[WindowsFeature]ContainersFeature"
-    }
-
     Script DownloadImage
     {
         GetScript = { return @{} }
         SetScript = {
 
-                if ($wimPath -ne $null)
+                if ($using:wimPath -ne $null)
                 {
-                    Write-Verbose "Downloading container image from $wimPath" -Verbose
-                    wget -Uri $WimPath -OutFile $localWimPath -UseBasicParsing
+                    Write-Verbose "Downloading container image from $using:wimPath" -Verbose
+                    wget -Uri $using:WimPath -OutFile $using:localWimPath -UseBasicParsing
                 }
-                elseif (-not (Test-Path $localWimPath))
+                elseif (-not (Test-Path $using:localWimPath))
                 {
                     throw "Path to download wim image was not provided and localWimPath does not exist"
                 }
 
-                Write-Verbose "Installing container image $localWimPath" -Verbose
-                Install-ContainerOsImage -WimPath $localWimPath -Force
+                Write-Verbose "Installing container image $using:localWimPath" -Verbose
+                Install-ContainerOsImage -WimPath $using:localWimPath -Force
 
                 while ($imageCollection -eq $null)
                 {
+                    
                     #
                     # Sleeping to ensure VMMS has restarted to workaround TP3 issue
                     #
+                    
                     Start-Sleep -Sec 2
                     Write-Verbose "TODO test" -Verbose
-                    $imageCollection = Get-ContainerImage $containerImageName
+                    $imageCollection = Get-ContainerImage $using:containerImageName
                 }
             }
-        TestScript = { return ((Get-ContainerImage $containerImageName) -ne $null) }
+        TestScript = { return ((Get-ContainerImage $using:containerImageName) -ne $null) }
         DependsOn = "[WindowsFeature]ContainersFeature"
     }
 
